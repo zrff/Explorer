@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.zrff.backend.auth.controller.LoginController">
+    <!--  根据主键查找用户  -->
+    <select id="getUserByPhone" parameterType="java.util.Map" resultType="com.github.zrff.backend.auth.model.User">
+        select id,nick_name nickName,phone_no phoneNo,password,dingtalk_id dingtalkID,create_time createTime,update_time updateTime
+        from user
+        where phone_no='${username}'
+        limit 1
+    </select>
+    <!--  新增用户，并返回主键  -->
+    <insert id="addUser" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id">
+        insert into user(nick_name,phone_no,password,dingtalk_id)
+        value ('${nickName}','${phoneNo}','','${dingtalkID}')
+    </insert>
+    <!--  查找用户是否存在，并返回主键  -->
+    <select id="checkUserIfExist" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select ifnull(u.id,-1) id
+        from (select max(id) id,count(1) num from user
+        where phone_no= '${phoneNo}') u
+        limit 1
+    </select>
+</mapper>

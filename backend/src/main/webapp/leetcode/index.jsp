@@ -20,6 +20,7 @@
 <meta name="x5-page-mode" content="app">
 
 <head>
+    <title>leetcode</title>
     <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 

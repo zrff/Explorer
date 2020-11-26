@@ -24,6 +24,7 @@ export default class LeetcodePage extends React.Component {
             nums:[0],
             rates:[0]
         };
+        this.refresh = this.refresh.bind(this);
     }
 
     submitRecord(value){
@@ -34,7 +35,7 @@ export default class LeetcodePage extends React.Component {
             success:(e)=>{
                 if(e.code==0){
                     Toast.show('提交成功!');
-                    window.location.reload();
+                    this.refresh();
                 }else{
                     Toast.show(e.message);
                 }
@@ -158,7 +159,7 @@ export default class LeetcodePage extends React.Component {
         });
     }
 
-    componentDidMount() {
+    refresh(){
         $.ajax({
             url:config.backend+'/leetcode/fetch',
             contentType: 'application/json',
@@ -166,6 +167,10 @@ export default class LeetcodePage extends React.Component {
                 this.setState(e.data);
             }
         });
+    }
+
+    componentDidMount() {
+        this.refresh();
     }
 }
 

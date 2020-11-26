@@ -5,7 +5,6 @@
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <html>
-<title>登陆页面</title>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum=1.0,minimum=1.0,user-scalable=0" />
 <!-- uc强制竖屏 -->
 <meta name="screen-orientation" content="portrait">
@@ -21,6 +20,7 @@
 <meta name="x5-page-mode" content="app">
 
 <head>
+    <title>dingtalk认证</title>
     <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 
@@ -37,7 +37,7 @@
     document.write('<script src="<%=basePath%>/dist/webpack.assets.js?v=' + Math.random() + '"><\/script>');
 </script>
 <script>
-    document.write('<script src="<%=basePath%>' + window.WEBPACK_ASSETS['LoginPage'].js + '"><\/script>');
+    document.write('<script src="<%=basePath%>' + window.WEBPACK_ASSETS['DingTalkPage'].js + '"><\/script>');
 </script>
 </body>
 </html>

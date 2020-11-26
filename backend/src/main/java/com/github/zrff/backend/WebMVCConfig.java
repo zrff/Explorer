@@ -19,12 +19,16 @@ public class WebMVCConfig implements WebMvcConfigurer {
                 .addResourceLocations("/assets","/dist","/png");
     }
 
+    String[] excludePath = {
+            "/login","/assets/**","/png/**","/dist/**",
+            "/dingtalk/**","/leetcode/index"
+    };
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new GlobalInterceptor()).addPathPatterns("/**");
         registry.addInterceptor(new GlobalSessionInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/login","/assets/**","/png/**","/dist/**");
+                .excludePathPatterns(excludePath);
 //        registry.addInterceptor(new LoginInterceptor())
 //                .addPathPatterns("/**")
 //                .excludePathPatterns("/login");
