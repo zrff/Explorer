@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.zrff.backend.leetcode.service.impl.MonRecordServiceImpl">
+    <!--获取当月题量或总量-->
+    <select id="getSum" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select ifnull(sum(num),0) num
+        from leetecode_record
+        where user_id = ${userID}
+        <if test="mon!=null">
+            <![CDATA[
+                and create_time >= date_format(now(),'%Y-%m-01')
+                and create_time <= date_add(date_format(now(),'%Y-%m-01'),interval 1 month)
+            ]]>
+        </if>
+    </select>
+    <!--获取每月题量或总量-->
+    <select id="getList" parameterType="java.util.Map" resultType="com.github.zrff.backend.leetcode.model.Record">
+        select d.date mon,ifnull(ud.num,0) num from
+        (select date_format(date_sub(now(),interval id month ),'%Y-%m') date
+        from num) d
+        left join
+        (select date_format(create_time,'%Y-%m') mon, ifnull(sum(num),0) num
+        from leetecode_record
+        where user_id = ${userID}
+        and create_time > date_format(date_sub(now(),interval 11 month ),'%Y-%m')
+        group by date_format(create_time,'%Y-%m')
+        order by date_format(create_time,'%Y-%m') asc) ud
+        on d.date = ud.mon
+        order by d.date asc
+    </select>
+    <!--记录题量-->
+    <insert id="addRecord">
+        insert into leetecode_record(num,user_id)
+        value (${num},${userID})
+    </insert>
+</mapper>
