@@ -21,6 +21,16 @@ CREATE TABLE leetecode_record (
 insert into cug_backend.user(nick_name, phone_no, password) value('cug',13177436107,'123456');
 
 
-select DATE_FORMAT(create_time,'%Y-%m') mon,sum(num) from leetecode_record
-where user_id=1
-group by DATE_FORMAT(create_time,'%Y-%m')
+create table num(
+    id int PRIMARY KEY auto_increment
+);
+INSERT INTO cug_backend.num (id) VALUES (0);
+INSERT INTO cug_backend.num (id) VALUES (1);
+INSERT INTO cug_backend.num (id) VALUES (2);
+INSERT INTO cug_backend.num (id) VALUES (3);
+INSERT INTO cug_backend.num (id) VALUES (4);
+INSERT INTO cug_backend.num (id) VALUES (5);
+INSERT INTO cug_backend.num (id) VALUES (6);
+INSERT INTO cug_backend.num (id) VALUES (7);
+INSERT INTO cug_backend.num (id) VALUES (8);
+INSERT INTO cug_backend.num (id) VALUES (9);
