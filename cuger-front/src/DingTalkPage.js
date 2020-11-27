@@ -32,15 +32,19 @@ export default class DingTalkPage extends React.Component {
                     {
                     code: 'hYLK98jkf0m' //string authCode
                     }*/
-                    Toast.show(result.code);
+                    // Toast.show(result.code);
+                    // Toast.show(JSON.stringify(params));
                     // 认证用户
                     $.ajax({
                         url:config.backend+'/dingtalk/auth',
                         contentType: 'application/json',
-                        data:{auth_code:result.code},
+                        data:{auth_code:result.code, agent_id:result.agent_id?result.agent_id:''},
                         success:(e)=>{
                             Toast.show(JSON.stringify(e));
                             window.location.href = params.app?params.app:'/leetcode/index';
+                        },
+                        error:(e)=>{
+                            Toast.show(JSON.stringify(e));
                         }
                     });
                 

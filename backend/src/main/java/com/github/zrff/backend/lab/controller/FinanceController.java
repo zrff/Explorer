@@ -51,7 +51,7 @@ public class FinanceController {
     @RequestMapping("/addRecord")
     @ResponseBody
     public Object addRecord(@RequestParam Map<String,Object> params, HttpServletRequest req){
-        params.put("userID",new SessionUtil().getDevUser().getId());
+        params.put("userID",new SessionUtil().getUserCode(req));
         int res = financeInfo.addRecord(params);
         return res>0? Message.createSuccessMessage(res)
                 : Message.createFailureMessage(res);

@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/dingtalk")
@@ -32,10 +31,14 @@ public class DingTalkController {
 
     @Value("${dingtalk.corpID}")
     private String corpID;
-    @Value("${dingtalk.explorer.appkey}")
-    private String appkey;
-    @Value("${dingtalk.explorer.appsecret}")
-    private String appsecret;
+
+    @Value("${dingtalk.app.agentID}")
+    private String agentIDs;
+    @Value("${dingtalk.app.appkey}")
+    private String appkeys;
+    @Value("${dingtalk.app.appsecret}")
+    private String appsecrets;
+    private DingTalkAppInfo dingTalkAppInfo;
 
     String sqlNSBase = "com.github.zrff.backend.auth.controller.LoginController.";
     @Autowired
@@ -46,7 +49,7 @@ public class DingTalkController {
      * @return
      */
     public JSONObject getToken(){
-        String params = "appkey=" + appkey + "&appsecret=" + appsecret;
+        String params = "appkey=" + dingTalkAppInfo.getAppkey() + "&appsecret=" + dingTalkAppInfo.getAppsecret();
         String response = HttpRequest.sendGet(fetch_token_url,params);
         JSONObject msg = (JSONObject) JSONObject.parse(response);
         return msg;
@@ -120,6 +123,15 @@ public class DingTalkController {
     @RequestMapping("/auth")
     @ResponseBody
     public Object auth(@RequestParam(value = "auth_code")String auth_code, HttpServletRequest req) {
+        String agentID = req.getParameter("agent_id");
+        // 获取应用信息
+        dingTalkAppInfo = DingTalkAppInfo.build(
+                    agentID,
+                    Arrays.asList(agentIDs.split(",")),
+                    Arrays.asList(appkeys.split(",")),
+                    Arrays.asList(appsecrets.split(","))
+        );
+
         String errMsg = "";
         // 获取应用的token
         JSONObject tokenRep = getToken();
