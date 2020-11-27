@@ -34,3 +34,15 @@ INSERT INTO cug_backend.num (id) VALUES (6);
 INSERT INTO cug_backend.num (id) VALUES (7);
 INSERT INTO cug_backend.num (id) VALUES (8);
 INSERT INTO cug_backend.num (id) VALUES (9);
+
+
+-- 实验室基金表
+CREATE TABLE lab_finance (
+    id INT(32) PRIMARY KEY auto_increment,
+    item VARCHAR(256) default '' NOT NULL,
+    amount double default 0 NOT NULL,
+    user_id INT(32) NOT NULL,
+    create_time timestamp default CURRENT_TIMESTAMP,
+    update_time timestamp default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+    is_delete tinyint default 0
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;

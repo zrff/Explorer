@@ -6,7 +6,8 @@ module.exports = {
         MainPage: './src/MainPage.js',
         LoginPage: './src/LoginPage.js',
         LeetcodePage: './src/LeetcodePage.js',
-        DingTalkPage:'./src/DingTalkPage.js'
+        DingTalkPage:'./src/DingTalkPage.js',
+        LabFinancePage:'./src/LabFinancePage.js'
     },
     output: {
         filename: '[name].' + version + '.js',
