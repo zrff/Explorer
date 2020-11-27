@@ -1,1 +1,1 @@
-window.WEBPACK_ASSETS = {"DingTalkPage":{"js":"/dist/DingTalkPage.1606399415707.js"},"LeetcodePage":{"js":"/dist/LeetcodePage.1606399415707.js"},"LoginPage":{"js":"/dist/LoginPage.1606399415707.js"},"MainPage":{"js":"/dist/MainPage.1606399415707.js"}}
+window.WEBPACK_ASSETS = {"DingTalkPage":{"js":"/dist/DingTalkPage.1606464018728.js"},"LabFinancePage":{"js":"/dist/LabFinancePage.1606464018728.js"},"LeetcodePage":{"js":"/dist/LeetcodePage.1606464018728.js"},"LoginPage":{"js":"/dist/LoginPage.1606464018728.js"},"MainPage":{"js":"/dist/MainPage.1606464018728.js"}}
