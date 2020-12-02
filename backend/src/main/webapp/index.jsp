@@ -22,7 +22,7 @@
 
 <head>
     <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="<%=basePath%>/assets/jquery.min.js"></script>
 
     <script src="<%=basePath%>/png/icon/iconfont.js"></script>
     <!-- <link rel="stylesheet" href="./png/icon/iconfont.css"> -->

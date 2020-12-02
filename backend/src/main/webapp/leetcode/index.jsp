@@ -22,7 +22,7 @@
 <head>
     <title>leetcode</title>
     <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="<%=basePath%>/assets/jquery.min.js"></script>
 
     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
