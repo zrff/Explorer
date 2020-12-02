@@ -90,6 +90,10 @@ export default class LeetcodePage extends React.Component {
             title: {
                 text: '每月Leetcode刷题情况'
             },
+            xAxis: [{
+                categories: this.state.dates,
+                crosshair: true
+            }],
             yAxis: [{ // Primary yAxis
                 labels: {
                     format: '{value}%',
@@ -121,14 +125,6 @@ export default class LeetcodePage extends React.Component {
             }],
             legend: {
                 enabled: false
-            },
-            plotOptions: {
-                series: {
-                    label: {
-                        connectorAllowed: false
-                    },
-                    pointStart: 2010
-                }
             },
             series: [{
                 name: '题量',

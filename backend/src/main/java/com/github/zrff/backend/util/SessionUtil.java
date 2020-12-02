@@ -66,6 +66,10 @@ public class SessionUtil {
         User u = getUser(req);
         return u!=null? ""+u.getId(): "-1";
     }
+    public String getDevUserCode(HttpServletRequest req){
+        User u = getDevUser();
+        return u.getId()+"";
+    }
 
 
     /**
