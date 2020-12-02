@@ -5,6 +5,7 @@ CREATE TABLE user (
     nick_name VARCHAR(64) NOT NULL,
     phone_no VARCHAR(11) UNIQUE NOT NULL,
     password VARCHAR(64) NOT NULL,
+    dingtalk_id VARCHAR(64) default '' NOT NULL,
     create_time timestamp default CURRENT_TIMESTAMP,
     update_time timestamp default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
