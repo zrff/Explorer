@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.zrff.backend.pub.controller.InfoReportController">
+    <!--获取对应名字的数量-->
+    <select id="count" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*) from info_list
+        where name='${name}'
+        <if test="infoType!=null">
+            and info_type = '${infoType}'
+        </if>
+    </select>
+
+    <!--记录或更新IP-->
+    <insert id="add">
+        insert into info_list(name,info,info_type)
+        value ('${name}','${info}','${infoType}')
+    </insert>
+    <update id="update">
+        update info_list set info = '${info}'
+        where name='${name}'
+        <if test="infoType!=null">
+            and info_type = '${infoType}'
+        </if>
+    </update>
+
+    <!--获取汇总信息-->
+    <select id="summary" parameterType="java.util.Map" resultType="com.github.zrff.backend.pub.model.InfoRecord">
+        select id,name,info,info_type infoType
+        from info_list
+        where is_delete=0
+        <if test="infoType!=null">
+            and info_type = '${infoType}'
+        </if>
+        order by info_type asc
+    </select>
+
+</mapper>

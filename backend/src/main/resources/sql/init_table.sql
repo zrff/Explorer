@@ -47,3 +47,15 @@ CREATE TABLE lab_finance (
     update_time timestamp default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     is_delete tinyint default 0
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+
+-- 信息记录表
+CREATE TABLE info_list (
+    id INT(32) PRIMARY KEY auto_increment,
+    name VARCHAR(256) default '' NOT NULL,
+    info VARCHAR(256) default '' NOT NULL,
+    info_type VARCHAR(64) default '' NOT NULL,
+    create_time timestamp default CURRENT_TIMESTAMP,
+    update_time timestamp default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+    is_delete tinyint default 0
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;

@@ -21,7 +21,8 @@ public class WebMVCConfig implements WebMvcConfigurer {
 
     String[] excludePath = {
             "/login","/assets/**","/png/**","/dist/**",
-            "/dingtalk/**","/leetcode/index"
+            "/dingtalk/**","/leetcode/index",
+            "/pub/**"
     };
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
